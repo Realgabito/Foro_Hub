@@ -45,4 +45,15 @@ public class TopicoController {
     public  ResponseEntity<Page<DatosListarTopico>> listarTopico(@PageableDefault(size = 10)Pageable paginacion) {
         return ResponseEntity.ok(topicoRepository.findAll(paginacion).map(DatosListarTopico::new));
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity <DatosRespuestaTopico> listarTopicoById(@PathVariable Long id) {
+        
+        //Search in Db a matching result and thorw a message in case there is not a match
+        Topico topico = topicoRepository.findById(id).orElseThrow(() -> new RuntimeException("Topico no encontrado"));
+
+        DatosRespuestaTopico datosRespuestaTopico = new DatosRespuestaTopico(topico.getId(), topico.getTitulo(), topico.getMensaje(), topico.getAutor(), topico.getCurso());
+
+        return ResponseEntity.ok(datosRespuestaTopico);
+    }
 }
