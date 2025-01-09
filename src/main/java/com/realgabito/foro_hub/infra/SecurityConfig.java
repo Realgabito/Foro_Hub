@@ -24,6 +24,8 @@ public class SecurityConfig {
                     .requestMatchers(HttpMethod.GET, "/topicos/**").permitAll()
                     //Permitir accesso publico a PUT en todos los Endpoints
                     .requestMatchers(HttpMethod.PUT, "/topicos/**").permitAll()
+                    //Permitir accesso publico a los endpoints DELETE
+                    .requestMatchers(HttpMethod.DELETE, "/topicos/**").permitAll()
                     // Cualquier otra solicitud requiere autenticación
                     .anyRequest().authenticated()
                 )

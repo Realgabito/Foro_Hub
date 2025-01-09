@@ -44,13 +44,19 @@ public class TopicoController {
         return ResponseEntity.created(uri).body(datosRespuestaTopico);
     }
 
+    // @GetMapping
+    // public  ResponseEntity<Page<DatosListarTopico>> listarTopico(@PageableDefault(size = 10)Pageable paginacion) {
+    //     return ResponseEntity.ok(topicoRepository.findAll(paginacion).map(DatosListarTopico::new));
+    // }
+
     @GetMapping
-    public  ResponseEntity<Page<DatosListarTopico>> listarTopico(@PageableDefault(size = 10)Pageable paginacion) {
-        return ResponseEntity.ok(topicoRepository.findAll(paginacion).map(DatosListarTopico::new));
+    public ResponseEntity<Page<Object>> listarTopicosActivos(@PageableDefault(size = 10) Pageable paginacion) {
+        return ResponseEntity.ok(topicoRepository.findByStatusTrue(paginacion).map(DatosListarTopico::new));
     }
 
+
     @GetMapping("/{id}")
-    public ResponseEntity <DatosRespuestaTopico> listarTopicoById(@PathVariable Long id) {
+    public ResponseEntity <DatosRespuestaTopico> buscarTopicoById(@PathVariable Long id) {
         
         //Search in Db a matching result and thorw a message in case there is not a match
         Topico topico = topicoRepository.findById(id).orElseThrow(() -> new RuntimeException("Topico no encontrado"));
@@ -59,6 +65,7 @@ public class TopicoController {
 
         return ResponseEntity.ok(datosRespuestaTopico);
     }
+
 
     @PutMapping("/{id}")
     @Transactional
@@ -69,5 +76,16 @@ public class TopicoController {
         topico.actualizarTopico(DatosActualizarTopico);
 
         return ResponseEntity.ok(new DatosRespuestaTopico(topico.getId(), topico.getTitulo(), topico.getMensaje(), topico.getAutor(), topico.getCurso()));
-    }   
+    }
+    
+    
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity eliminarTopico(@PathVariable Long id) {
+        Topico topico = topicoRepository.getReferenceById(id);
+
+        topico.eliminarTopico();
+
+        return ResponseEntity.noContent().build();
+    }
 }

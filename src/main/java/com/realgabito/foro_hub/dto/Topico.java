@@ -54,4 +54,8 @@ public class Topico {
             this.curso = datosActualizarTopico.curso();
         }
     }
+
+    public void eliminarTopico() {
+        this.status = false;
+    }
 }
