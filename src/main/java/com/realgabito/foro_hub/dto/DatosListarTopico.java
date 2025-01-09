@@ -12,7 +12,7 @@ public record DatosListarTopico(
         Boolean status) {
 
     public DatosListarTopico(Topico topico) {
-        this(topico.getId(), topico.getTitulo(), topico.getMensaje(),
-                topico.getAutor(), topico.getCurso(), topico.getFechaCreacion(), topico.getStatus());
+        this(topico.getId(), topico.getAutor(), topico.getTitulo(),
+                topico.getMensaje(), topico.getCurso(), topico.getFechaCreacion(), topico.getStatus());
     }
 }
