@@ -21,6 +21,7 @@ public class Topico {
     private Long id;
     private String titulo;
     private String mensaje;
+    @Column(name = "fecha_creacion", nullable = false, updatable = false)
     private LocalDateTime fechaCreacion;
     private Boolean status;
     private String autor;
