@@ -1,10 +1,13 @@
 package com.realgabito.foro_hub.controller;
 
+import com.realgabito.foro_hub.dto.DatosActualizarTopico;
 import com.realgabito.foro_hub.dto.DatosListarTopico;
 import com.realgabito.foro_hub.dto.DatosRegistrarTopico;
 import com.realgabito.foro_hub.dto.DatosRespuestaTopico;
 import com.realgabito.foro_hub.dto.Topico;
 import com.realgabito.foro_hub.repository.TopicoRepository;
+
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -56,4 +59,15 @@ public class TopicoController {
 
         return ResponseEntity.ok(datosRespuestaTopico);
     }
+
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity actualizarTopico(@RequestBody @Valid DatosActualizarTopico DatosActualizarTopico) {
+
+        Topico topico = topicoRepository.getReferenceById(DatosActualizarTopico.id());
+
+        topico.actualizarTopico(DatosActualizarTopico);
+
+        return ResponseEntity.ok(new DatosRespuestaTopico(topico.getId(), topico.getTitulo(), topico.getMensaje(), topico.getAutor(), topico.getCurso()));
+    }   
 }

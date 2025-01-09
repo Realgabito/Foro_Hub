@@ -22,6 +22,8 @@ public class SecurityConfig {
                     .requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()
                     // Permitir acceso público a GET en /topicos
                     .requestMatchers(HttpMethod.GET, "/topicos/**").permitAll()
+                    //Permitir accesso publico a PUT en todos los Endpoints
+                    .requestMatchers(HttpMethod.PUT, "/topicos/**").permitAll()
                     // Cualquier otra solicitud requiere autenticación
                     .anyRequest().authenticated()
                 )
