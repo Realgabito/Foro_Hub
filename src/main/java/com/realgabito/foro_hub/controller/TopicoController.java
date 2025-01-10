@@ -1,10 +1,10 @@
 package com.realgabito.foro_hub.controller;
 
-import com.realgabito.foro_hub.dto.DatosActualizarTopico;
-import com.realgabito.foro_hub.dto.DatosListarTopico;
-import com.realgabito.foro_hub.dto.DatosRegistrarTopico;
-import com.realgabito.foro_hub.dto.DatosRespuestaTopico;
-import com.realgabito.foro_hub.dto.Topico;
+import com.realgabito.foro_hub.dto.topico.DatosActualizarTopico;
+import com.realgabito.foro_hub.dto.topico.DatosListarTopico;
+import com.realgabito.foro_hub.dto.topico.DatosRegistrarTopico;
+import com.realgabito.foro_hub.dto.topico.DatosRespuestaTopico;
+import com.realgabito.foro_hub.dto.topico.Topico;
 import com.realgabito.foro_hub.repository.TopicoRepository;
 
 import jakarta.transaction.Transactional;
