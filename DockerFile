@@ -1,0 +1,14 @@
+# Usa una imagen ligera de Java 17
+FROM openjdk:17-jdk-slim
+
+# Establece el directorio de trabajo dentro del contenedor
+WORKDIR /app
+
+# Copia el archivo JAR generado por Maven
+COPY target/foro-hub-0.0.1-SNAPSHOT.jar app.jar
+
+# Expone el puerto 8080 para la API
+EXPOSE 3306
+
+# Ejecuta la aplicación con el perfil de producción
+ENTRYPOINT ["java", "-jar", "app.jar", "--spring.profiles.active=prod"]
