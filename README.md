@@ -1,5 +1,10 @@
 # Foro Hub
 
+## Indice /  Table of Contents
+
+- [Español 🇪🇸](#espa%C3%B1ol-%F0%9F%87%AA%F0%9F%87%B8)
+- [English 🇬🇧](#english-%F0%9F%87%AC%F0%9F%87%A7)
+
 ## Español 🇪🇸
 
 ### Descripción
@@ -75,7 +80,7 @@ Tambies puedes correr el proyecto teniendo:
 
 ---
 
-## English 🇬🇧
+## English En
 
 ### Description
 **Foro Hub** is a REST API designed for managing online discussion forums. It allows registered users to create, update, list, and delete topics. Additionally, it implements an authentication system to ensure that only authenticated users can access the functionalities.
