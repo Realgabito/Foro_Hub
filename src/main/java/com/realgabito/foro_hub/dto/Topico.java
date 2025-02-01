@@ -1,3 +1,5 @@
+//Should have a check
+
 package com.realgabito.foro_hub.dto;
 
 import jakarta.persistence.*;
